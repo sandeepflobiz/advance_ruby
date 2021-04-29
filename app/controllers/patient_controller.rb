@@ -18,6 +18,7 @@ class PatientController < ApplicationController
     @expense = Expenditure.new
     @expense.active = true
     @expense.start_date = Date.current
+
     ActiveRecord::Base.transaction do
       @user.save!
 

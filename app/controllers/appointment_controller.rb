@@ -14,7 +14,7 @@ class AppointmentController < ApplicationController
   end
 
   def cancelAppointment
-    
+
   end
 
 end
