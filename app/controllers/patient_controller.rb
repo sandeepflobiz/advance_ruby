@@ -10,10 +10,7 @@ class PatientController < ApplicationController
   end
 
   def createPatient
-    @user = Patient.new
-    @user.mobile = params[:mobile]
-    @user.name = params[:name]
-
+    @user = Patient.new(patient_params)
     @apt = Appointment.new
     @apt.physician_id = params[:physician_id]
     @apt.appointment_date = Date.current
@@ -29,13 +26,18 @@ class PatientController < ApplicationController
 
       @expense.patient_id = @user.id
       @expense.save!
-
-      msg = Response.customSuccessResponse("SUCCESS",@user)
+      data ={:appointment_id=>@apt.id,:physician_id=>@apt.physician_id}
+      msg = Response.customSuccessResponse("SUCCESS",data)
       render :json=>msg
     end
 
-  rescue =>error
+    rescue =>error
       msg = Response.customErrorResponse(error,nil)
       render :json=>msg
+    end
+
+  private
+    def patient_params
+      params.require(:patient).permit(:name, :mobile)
     end
 end

@@ -9,4 +9,12 @@ class AppointmentController < ApplicationController
     render :json=>msg
   end
 
+  def updateAppointment
+
+  end
+
+  def cancelAppointment
+    
+  end
+
 end
