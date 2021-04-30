@@ -1,15 +1,15 @@
 require_relative "../utils/response.rb"
 class PictureController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   include Response
 
-  def getAll
+  def index
     @pictures = Picture.all
     msg = Response.customSuccessResponse("SUCCESS",@pictures)
     render :json=>msg
   end
 
-  def createPicture
+  def create
     begin
       @picture = Picture.new(picture_params)
       @picture.save!

@@ -1,15 +1,15 @@
 require_relative "../utils/response.rb"
 class PatientController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   include Response
 
-  def getAll
+  def index
     @patients = Patient.all
     msg = Response.customSuccessResponse("SUCCESS",@patients)
     render :json=>msg
   end
-
-  def createPatient
+  
+  def create
     @user = Patient.new(patient_params)
     @apt = Appointment.new
     @apt.physician_id = params[:physician_id]

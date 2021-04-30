@@ -3,18 +3,9 @@ class AppointmentController < ApplicationController
   skip_before_action :verify_authenticity_token
   include Response
 
-  def getAll
+  def index
     @apts = Appointment.all
     msg = Response.customSuccessResponse("SUCCESS",@apts)
     render :json=>msg
   end
-
-  def updateAppointment
-
-  end
-
-  def cancelAppointment
-
-  end
-
 end

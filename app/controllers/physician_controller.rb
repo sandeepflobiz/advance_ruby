@@ -3,13 +3,13 @@ class PhysicianController < ApplicationController
   skip_before_action :verify_authenticity_token
   include Response
 
-  def getAll
+  def index
     @physicians = Physician.all
     msg = Response.customSuccessResponse("SUCCESS",@physicians)
     render :json=>msg
   end
 
-  def createPhysician
+  def create
     begin
       @mobile_number = Physician.find_by(mobile:params[:mobile])
       if @mobile_number

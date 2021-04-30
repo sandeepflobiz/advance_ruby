@@ -1,5 +1,5 @@
 class ExpenditureController < ApplicationController
-  def getAll
+  def index
     @expenses = Expenditure.all
     msg = Response.customSuccessResponse("SUCCESS",@expenses)
     render :json=>msg
