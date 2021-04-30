@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   post 'physician/createPhysician'
   get 'expenditure/getAll'
   get 'appointment/getAll'
+  get 'picture/getAll'
+  post 'picture/createPicture'
 end
